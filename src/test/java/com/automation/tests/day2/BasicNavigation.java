@@ -40,7 +40,10 @@ public class BasicNavigation {
         }else{
             System.out.println("TEST FAILED !");
         }
+// come back to Google
+        driver.navigate().back();
 
+        verifyEquals(driver.getTitle(), "Google");
 
        //MUST BE AT THE END
         driver.close(); // to close browser
