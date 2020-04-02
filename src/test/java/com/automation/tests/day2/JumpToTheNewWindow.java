@@ -35,7 +35,7 @@ public class JumpToTheNewWindow {
 
         for (String windowID : WindowHandles) {
             // if it is's not an old window, then switch
-            if (windowID.equals(WindowHandle)) {
+            if (!windowID.equals(WindowHandle)) {
                 // to jump to the new window
                 driver.switchTo().window(windowID);
             }
@@ -43,7 +43,8 @@ public class JumpToTheNewWindow {
 
         System.out.println("AFTER SWITCH :" + driver.getCurrentUrl());
 
-        driver.close();
+       // driver.close();
+        driver.quit();
     }
 
     // THIS METHOD HELPS TO SWITCH IN BETWEEN WINDOWS BASED ON PAGE TITLE
