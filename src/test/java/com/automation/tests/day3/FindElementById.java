@@ -33,8 +33,39 @@ public class FindElementById {
 
    }else {
        System.out.println("TEST FAILED !!!");
-
         }
+
+   // let's click on logout button. It looks like a button, but it's actually a link
+    // every element with <a> tag is a link
+        // if you have couple space in text, just use partialLinkText instead of linktext
+        //linktext equals()
+        // partialLinkText - contains()
+
+        WebElement logout = driver.findElement(By.linkText("Logout"));
+
+        String href = logout.getAttribute("href");
+        String className = logout.getAttribute("class");
+
+        System.out.println(href);
+        System.out.println(className);
+
+        logout.click();
+        Thread.sleep(2000);
+
+        // let's enter invalid credentials
+
+        driver.findElement(By.name("username")).sendKeys("wrong");
+        driver.findElement(By.name("password")).sendKeys("wrong");
+        driver.findElement(By.id("wooden_spoon")).click();
+
+
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.id("flash-messages"));
+
+        System.out.println(errorMessage.getText());
+
+        Thread.sleep(2000);
 
         driver.quit();
 
