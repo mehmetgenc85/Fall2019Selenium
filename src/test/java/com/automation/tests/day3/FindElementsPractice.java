@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.sql.SQLOutput;
+
 public class FindElementsPractice {
 
     public static void main(String[] args) throws Exception {
@@ -31,6 +33,19 @@ public class FindElementsPractice {
         signUP.click();
 
         Thread.sleep(2000);
+
+        String expected = "Thank you for signing up. Click the button below to return to the home page.";
+
+        WebElement message = driver.findElement(By.className("subheader"));
+
+        String actual = message.getText(); // To get the text <h3>Text</h3>
+
+        if (expected.equals(actual)){
+            System.out.println("TEST PASSED");
+        }else {
+            System.out.println("TEST FAILED");
+        }
+
 
         driver.quit(); // to close everything
 

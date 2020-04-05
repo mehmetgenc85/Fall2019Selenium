@@ -17,9 +17,10 @@ public class DriverFactory {
             WebDriverManager.chromedriver().setup();
             return new ChromeDriver();
 
-        }else{
-        WebDriverManager.firefoxdriver().setup();
-        return new FirefoxDriver();
+        }else {
+            WebDriverManager.firefoxdriver().setup();
+            return new FirefoxDriver();
+        }
 
     }
 }
