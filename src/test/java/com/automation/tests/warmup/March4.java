@@ -11,8 +11,8 @@ public class March4 {
 
     public static void main(String[] args) throws Exception {
  //       ebayTest();
-        amazonTest();
- //       wikiTest();
+ //       amazonTest();
+        wikiTest();
     }
     /**
      * Go to ebay --->          driver.get("http://ebay.com");
@@ -65,11 +65,15 @@ public class March4 {
      *  search FOR result `Selenium (software)`
      * verify url ends with `Selenium_(software)`
      */
-    private static void wikiTest() {
+    private static void wikiTest() throws Exception{
         driver = DriverFactory.createDriver("chrome");
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
+
         driver.findElement(By.id("searchInput")).sendKeys("Selenium (software)",Keys.ENTER);
-String link = driver.getCurrentUrl(); // TO GET LINK AS A STRING
+        String link = driver.getCurrentUrl(); // TO GET LINK AS A STRING
+
+        Thread.sleep(2000);
+
 if (link.endsWith("Selenium_(software)")){
     System.out.println("TEST PASSED");
 }else {
