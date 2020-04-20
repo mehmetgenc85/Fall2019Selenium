@@ -12,7 +12,7 @@ public class FindElementsTest {
 
     public static void main(String[] args) throws Exception{
 
-        WebDriverManager.chromedriver().version("79").setup();
+        WebDriverManager.chromedriver().version("81").setup();
         WebDriver driver=new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/");
 

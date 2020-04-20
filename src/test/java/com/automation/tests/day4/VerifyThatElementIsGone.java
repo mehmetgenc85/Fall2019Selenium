@@ -19,7 +19,7 @@ public class VerifyThatElementIsGone {
 
     public static void main(String[] args) throws  Exception{
 
-        WebDriverManager.chromedriver().version("79").setup();
+        WebDriverManager.chromedriver().version("81").setup();
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/multiple_buttons");
         Thread.sleep(2000);
