@@ -12,7 +12,7 @@ public class RadioButtonsTest {
 
         WebDriver driver = DriverFactory.createDriver("chrome");
         driver.get("http://practice.cybertekschool.com/radio_buttons");
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(4);
 
         WebElement blackButton = driver.findElement(By.id("black"));
         // if bitton is visible and eligible to click
@@ -22,6 +22,9 @@ public class RadioButtonsTest {
         }else{
             System.out.println("FAILED TO CLICK ON BLACK BUTTON");
         }
+
+
+        BrowserUtils.wait(2);
         // how do we verify that button clicked
 
 
