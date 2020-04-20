@@ -13,26 +13,36 @@ public class CheckBoxes {
     public static void main(String[] args) {
 
         WebDriverManager.chromedriver().version("81").setup();
-        WebDriver driver= new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/checkboxes");
         BrowserUtils.wait(2);
 
         List<WebElement> checkBoxes = driver.findElements(By.tagName("input"));
 
-        checkBoxes.get(0).click(); // click on first checkbox
+        // checkBoxes.get(0).click(); // click on first checkbox
 
         BrowserUtils.wait(2);
 
-        checkBoxes.get(1).click(); // click on the second checkbox
+        for (int i = 0; i < checkBoxes.size(); i++) {
 
+            //          if visible,                          and eligible to click and  not clicked yet
+            if (checkBoxes.get(i).isDisplayed() && checkBoxes.get(i).isEnabled() && (!checkBoxes.get(i).isSelected())) {
+
+                //if checkbox is not selected, then  click on it!!!
+                checkBoxes.get(i).click();  // click on the checkbox
+                System.out.println(i+1 + "checkbox clicked");
+            } else {
+                System.out.println(i+1 + "checkbox wasn't clicked");
+            }
+
+            // checkBoxes.get(1).click(); // click on the second checkbox
+
+
+        }
         BrowserUtils.wait(2);
-
-
-
-
 
 
         driver.quit();
-
     }
 }
+
