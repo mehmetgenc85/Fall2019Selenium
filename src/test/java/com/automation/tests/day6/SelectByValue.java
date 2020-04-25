@@ -22,7 +22,7 @@ public class SelectByValue {
         if(expected.equals(actual)) {
             System.out.println("TEST PASSED");
         }else {
-            System.out.println("TEST FAILED");
+            System.out.println("TEST FAILED")
         }
 
 
