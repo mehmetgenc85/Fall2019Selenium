@@ -31,9 +31,10 @@ public class SelectByText {
         Select selectMonth = new Select(driver.findElement(By.id("month")));
         Select selectDay = new Select(driver.findElement(By.id("day")));
 
-        selectDay.selectByVisibleText("1");
-        selectMonth.selectByVisibleText("February");
+
         selectYear.selectByVisibleText("2003");
+        selectMonth.selectByVisibleText("February");
+        selectDay.selectByVisibleText("25");
 
         // select all months one by one
         List<WebElement> months = selectMonth.getOptions();
@@ -44,8 +45,20 @@ public class SelectByText {
             BrowserUtils.wait(1);
         }
 
+        Select stateSelect = new Select(driver.findElement(By.id("state")));
+        stateSelect.selectByVisibleText("District Of Columbia");
 
+        // option that is currently selected
+        //getFirstSelectedOption() -- returns a webelement, that's why we need to call getText
+        // getText() retrieves visible text from webelement
 
+        String selected = stateSelect.getFirstSelectedOption().getText();
+
+        if (selected.equals("District Of Columbia")) {
+            System.out.println("TEST PASSED");
+        }else {
+            System.out.println("TEST FAILED");
+        }
 
 
         BrowserUtils.wait(3);
