@@ -67,7 +67,6 @@ public class SelectByText {
         }
 
 
-
         BrowserUtils.wait(3);
         driver.quit();
 
