@@ -81,8 +81,8 @@ public class Alerts {
             System.out.println("Expected: "+expected3);
             System.out.println("Actual:" +actual3);
 
+        }
         BrowserUtils.wait(3);
         driver.quit();
-        }
     }
 }
