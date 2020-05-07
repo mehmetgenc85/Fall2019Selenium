@@ -85,6 +85,7 @@ public class SearchTests {
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver= new ChromeDriver();
+
     }
 
     @AfterMethod
