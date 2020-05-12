@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,10 +30,51 @@ public class VehiclePageTests {
 
     private By subTitleBy = By.className("oro-subtitle");
 
+    private By pageNumberBy = By.cssSelector("input[type=\"number\"]");
+
 
     @Test(description = "Check Fleet-->Vehicles page subtitle is equals to All Cars")
 
     public void verifyPageSubtitle(){
+
+
+        // find subtitle element
+        WebElement subTitleElement = driver.findElement(subTitleBy);
+        System.out.println(subTitleElement.getText());
+
+        String expected ="All Cars";
+        String actual = subTitleElement.getText();
+        Assert.assertEquals(actual, expected);
+
+    }
+
+    /**
+     *
+     *     ################ TASK 7 minutes until 3:48
+     *
+     *     Given user is on the vytrack landing page
+     *     When user logs on as a store manager
+     *     Then user navigates to Fleet --> Vehicles
+     *     And user verifies that page number is equals to "1"
+     */
+
+    @Test
+    public void verifyPageNumber(){
+
+        String expected ="1";
+        String actual = driver.findElement(pageNumberBy).getAttribute("value");
+        Assert.assertEquals(actual, expected);
+
+    }
+
+
+    @BeforeMethod
+    public void setup(){
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get(URL);
+        driver.manage().window().maximize();
+
         // login
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
@@ -55,22 +97,6 @@ public class VehiclePageTests {
         // this application is slow...
 
         BrowserUtils.wait(5);
-
-        // find subtitle element
-        WebElement subTitleElement = driver.findElement(subTitleBy);
-        System.out.println(subTitleElement.getText());
-
-    }
-
-
-
-
-    @BeforeMethod
-    public void setup(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(URL);
-        driver.manage().window().maximize();
 
     }
 
