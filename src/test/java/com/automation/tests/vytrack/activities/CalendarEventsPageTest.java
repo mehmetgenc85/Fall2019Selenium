@@ -12,10 +12,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CallsPageTests {
+public class CalendarEventsPageTest {
 
-
-    private  By usernameBy = By.id("prependedInput");
+    private By usernameBy = By.id("prependedInput");
     private By passwordBy = By.id("prependedInput2");
 
     private WebDriver driver;
@@ -25,11 +24,13 @@ public class CallsPageTests {
     private String storeManagerPassword="UserUser123";
 
     private By activitiesBy = By.xpath("//*[@id=\"main-menu\"]/ul/li[5]/a/span");
-    private By logCallBtnBy = By.cssSelector("a[title='Log call']");
+    private By createEventBtnBy = By.xpath("//*[@id=\"container\"]/div[2]/div/div/div[2]/div/a");
+
+
 
     @BeforeMethod
-    public void setup(){
-        driver= DriverFactory.createDriver("chrome");
+    public void setup() {
+        driver = DriverFactory.createDriver("chrome");
         driver.get("https://qa2.vytrack.com/user/login");
         driver.manage().window().maximize();
         actions = new Actions(driver);
@@ -40,18 +41,19 @@ public class CallsPageTests {
         driver.findElement(passwordBy).sendKeys(storeManagerPassword, Keys.ENTER);
         BrowserUtils.wait(5);
 
-        // hover over Activities
+
+        // hover over Calendar Events
         actions.moveToElement(driver.findElement(activitiesBy)).perform();
         BrowserUtils.wait(2);
-        driver.findElement(By.linkText("Calls")).click();
+        driver.findElement(By.linkText("Calendar Events")).click();
         BrowserUtils.wait(5);
-
     }
 
+
     @Test
-    public void verifyLogCallButton(){
-        WebElement logCallBtnElement = driver.findElement(logCallBtnBy);
-        Assert.assertTrue(logCallBtnElement.isDisplayed());
+    public void verifyCreateButton(){
+        WebElement createCalendarEventBtn = driver.findElement(createEventBtnBy);
+        Assert.assertTrue(createCalendarEventBtn.isDisplayed());
 
 
 
